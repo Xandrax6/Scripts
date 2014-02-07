@@ -51,7 +51,7 @@ iptables -A OUTPUT -p udp --dport 53 --state NEW,ESTABLISHED -j ACCEPT
 iptables -A OUTPUT -p tcp -d $1 --sport smtp -m state --state ESTABLISHED -j ACCEPT
 iptables -A OUTPUT -p tcp -d $1 --sport pop3 -m state --state ESTABLISHED -j ACCEPT
 iptables -A OUTPUT -p tcp -d us.archive.ubuntu.com --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A OUTPUT -p tcp -d github.com --dport 443 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp -d archive.ubuntu.com --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
 iptables -A OUTPUT -p icmp --icmp-type 0 -d $1 -m state --state ESTABLISHED,RELATED -j ACCEPT
 iptables -A OUTPUT -p icmp --icmp-type 8 -s $1 -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
 
@@ -59,7 +59,7 @@ iptables -P INPUT DROP
 iptables -P FORWARD DROP
 iptables -P OUTPUT DROP
 
-echo "Adding rules complete. Saving to rules to startup..."
+echo "Adding rules complete. Saving rules to startup..."
 
 iptables-save > ~/rules.fw
 mv -v ~/rules.fw /root/rules.fw
