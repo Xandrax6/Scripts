@@ -1,4 +1,4 @@
-Import-Module ActiveDirectoy
+Import-Module ActiveDirectory
 
 New-ADUser –Name "Matt Fuhrman" –SamAccountName mfuhrman –DisplayName "Matt Fuhrman" -GivenName "Matt" -Surname "Fuhrman" –Enabled $true –ChangePasswordAtLogon $true -AccountPassword (ConvertTo-SecureString "Id@h0SpudT3ch5!?" -AsPlainText -force) -PassThru
 
