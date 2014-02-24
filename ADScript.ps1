@@ -1,6 +1,6 @@
 Import-Module ActiveDirectory
 
-New-ADUser –Name "tvccdcadmin" –SamAccountName tvccdcadmin –DisplayName "tvccdc admin" -GivenName "tvccdc" -Surname "admin" –Enabled $true -AccountPassword (ConvertTo-SecureString "1qw2#ER$5ty6&UI*" -AsPlainText -force) -PassThru
+New-ADUser –Name "tvccdcadmin" –SamAccountName tvccdcadmin –DisplayName "tvccdc admin" -GivenName "tvccdc" -Surname "admin" –Enabled $true –ChangePasswordAtLogon $true -AccountPassword (ConvertTo-SecureString "Id@h0SpudT3ch5!?" -AsPlainText -force) -PassThru
 
 New-ADUser –Name "Matt Fuhrman" –SamAccountName mfuhrman –DisplayName "Matt Fuhrman" -GivenName "Matt" -Surname "Fuhrman" –Enabled $true –ChangePasswordAtLogon $true -AccountPassword (ConvertTo-SecureString "Id@h0SpudT3ch5!?" -AsPlainText -force) -PassThru
 
@@ -20,8 +20,16 @@ New-ADUser –Name "Dane Burge" –SamAccountName dburge –DisplayName "Dane Burge" -
 
 Add-ADGroupMember Administrators tvccdcadmin
 
+Write-Host "tvccdcadmin added to Administrators"
+
 Add-ADGroupMember "Domain Admins" tvccdcadmin
+
+Write-Host "tvccdcadmin added to Domain Admins"
 
 Add-ADGroupMember "Enterprise Admins" tvccdcadmin
 
+Write-Host "tvccdcadmin added to Enterprise Admins"
+
 Add-ADGroupMember "Schema Admins" tvccdcadmin
+
+Write-Host "tvccdcadmin added to Schema Admins"
